@@ -8,8 +8,9 @@ puts "When you are done guessing, just press enter."
 person_guess = gets.chomp
 person_guess_num = person_guess.to_i
 
-while person_guess != ""
+while person_guess_num != ""
     if random_num == person_guess_num
+      while random_num == person_guess_num
       puts "You gussed correctly."
       puts "Do you want to keep playing? (y/n)"
       response = gets.chomp
@@ -22,31 +23,35 @@ while person_guess != ""
           puts "When you are done guessing, just press enter."
           person_guess = gets.chomp
           person_guess_num = person_guess.to_i
-          if random_num > person_guess_num
+          puts person_guess_num
+            if person_guess_num == random_num
+              puts "congrats"
+            elsif random_num > person_guess_num
             puts "Your guess was too low"
             puts "Try to guess again"
             person_guess = gets.chomp
             person_guess_num = person_guess.to_i
-          else random_num < person_guess_num
+            else random_num < person_guess_num
             puts "Your guess was too high"
             puts "Try to guess again"
             person_guess = gets.chomp
             person_guess_num = person_guess.to_i
-          end
-     else
+            end
+        else
           puts "ok see you next time."
           person_guess_num = ""
           break
+        end
     end
-    elsif random_num > person_guess_num
-      puts "Your guess was too low"
-      puts "Try to guess again"
-      person_guess = gets.chomp
-      person_guess_num = person_guess.to_i
-    else random_num < person_guess_num
-      puts "Your guess was too high"
-      puts "Try to guess again"
-      person_guess = gets.chomp
-      person_guess_num = person_guess.to_i
-    end
+  elsif random_num > person_guess_num
+    puts "Your guess was too low"
+    puts "Try to guess again"
+    person_guess = gets.chomp
+    person_guess_num = person_guess.to_i
+  else random_num < person_guess_num
+    puts "Your guess was too high"
+    puts "Try to guess again"
+    person_guess = gets.chomp
+    person_guess_num = person_guess.to_i
+  end
 end
